@@ -1,0 +1,23 @@
+# Emacs temp file
+*~
+
+# Vscode temp files
+.vscode/
+
+#Setuptools distribution forlder
+build/
+dist/
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+
+#Python
+__pycache__/
+
+# Working space 
+WK/
+
+# kkw backout 
+data/kkw.old.txt
+
