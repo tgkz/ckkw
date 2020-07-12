@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # ckkw : check out unknown katakana from specified file
-#        with create unknown.txt as list of onknonw word to be merged into kkw.txt
+#        unknown word willbe stored to unknown.txt
+#        which will be merged into kkw.txt as a new word
 
-unknownkkw=[]
 import re
+unknownkkw = []
+
 # カタカナの　テストーデスよ オープン : this is a sample text for setlf input
 pattern = u'[\u30a1-\u30fa\u30fc]+'  # カタカナ
 rekata = re.compile(pattern)
+
 
 def initkkw():
     import os
@@ -20,7 +23,6 @@ def initkkw():
     kkwfile = kkwpath + Defaultkkwf
     with open(kkwfile) as kkwf:
         kkw = kkwf.read().splitlines()
-    #print ("kkw read completed", len(kkw))
 
 def ckkw(word):
     # check word is on the kkw list and return ture if exist
@@ -45,15 +47,15 @@ def ckline(lineno, line):
         #print (line, end='')
         #print (klist)
         for w in klist:
-            if not ckkw(w) :
-                print (lineno, line, end='')
-                print ("**", w, " is unknown")
+            if not ckkw(w):
+                print(lineno, line, end='')
+                print("**", w, " is unknown")
 
 import sys
 def main():
     args = sys.argv
     if len(args) <= 1:
-        print ("Please specify filename")
+        print("Please specify filename")
         sys.exit(-1)
     initkkw()
     lineno = 0
@@ -63,7 +65,7 @@ def main():
             lineno = lineno + 1
             ckline(lineno, line)
     finalizekkw()
-    exit (0)
+    exit(0)
 
 if __name__ == "__main__":
     main()
