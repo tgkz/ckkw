@@ -17,6 +17,7 @@ __pycache__/
 
 # Working space 
 WK/
+data/*.log
 
 # kkw backout 
 data/kkw.old.txt
