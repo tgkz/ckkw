@@ -17,13 +17,13 @@ ckkw はこれまで日本語に翻訳した技術的文章で使われたカタ
 
 # インストール
 
-`$ mkdir myckkw; cd myckkw`      # 適切はディレクトリに
+`$ mkdir myckkw; cd myckkw`      # 適切なディレクトリを用意し、移動します。
 
 `$ git clone github.com/tgkz/ckkw.git`
 
 `$ python3 setup.py install [--user]`
 
-       現状では --user の利用を推奨します。
+                      現状では --user の利用を推奨します。
 
 # 使い方
 
