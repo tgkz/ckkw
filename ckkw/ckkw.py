@@ -38,8 +38,8 @@ def finalizekkw():
     import os
     global unknownkkw
     if (len(unknownkkw) > 0):
-        unknownkkw = set(unknownkkw)
-        # print (unknownkkw)
+        setnkkkw = set(unknownkkw)   # create uniq set
+        unknownkkw = sorted(setnkkkw)   # sort it
         path = os.environ.get('UNKNOWNKKW', 'unknown.txt')
         with open(path, 'a') as unkf:
             unkf.write('\n'.join(unknownkkw))  # file unknow words with newline
