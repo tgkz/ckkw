@@ -40,7 +40,7 @@ def storekkw(kkw, addwords):
     # log を出す
     now = datetime.datetime.now()
     LOGFILE = now.strftime("%Y%m%d")+'.log'
-    LOGFILE = "Log-" + LOGFILE
+    LOGFILE = FULLKKWPATH + "Log-" + LOGFILE
     # print LOGFILE
     logf = open(LOGFILE, 'a')
     date = '%s' % (now)
