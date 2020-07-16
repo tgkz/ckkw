@@ -42,7 +42,8 @@ def finalizekkw():
         # print (unknownkkw)
         path = os.environ.get('UNKNOWNKKW', 'unknown.txt')
         with open(path, 'a') as unkf:
-            unkf.write('\n'.join(unknownkkw))  # file inknow words with newline
+            unkf.write('\n'.join(unknownkkw))  # file unknow words with newline
+            unkf.write('\n')
 
 
 def ckline(lineno, line):
