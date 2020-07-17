@@ -13,6 +13,12 @@ pattern = u'[\u30a1-\u30fa\u30fc]+'  # カタカナ
 rekata = re.compile(pattern)
 
 
+def mkpath(path):
+    # add "/" to the bottome, if path does not have
+    if (len(path) > 0) and (path[-1] != '/'):
+        path = path + '/'
+    return path
+
 def initkkw():
     import os
     # initialize for ckkw
@@ -21,7 +27,7 @@ def initkkw():
     global kkw
     Defaultkkwf = 'kkw.txt'
     kkwpath = os.environ.get('KKWPATH', '')
-    kkwfile = kkwpath + Defaultkkwf
+    kkwfile = mkpath(kkwpath) + Defaultkkwf
     with open(kkwfile) as kkwf:
         kkw = kkwf.read().splitlines()
 
@@ -40,8 +46,10 @@ def finalizekkw():
     if (len(unknownkkw) > 0):
         setnkkkw = set(unknownkkw)   # create uniq set
         unknownkkw = sorted(setnkkkw)   # sort it
-        path = os.environ.get('UNKNOWNKKW', 'unknown.txt')
-        with open(path, 'a') as unkf:
+        defaultufile = 'unknown.txt'
+        path = os.environ.get('UNKNOWNKKW', '')
+        ufile = mkpath(path) + defaultufile
+        with open(ufile, 'a') as unkf:
             unkf.write('\n'.join(unknownkkw))  # file unknow words with newline
             unkf.write('\n')
 
