@@ -56,12 +56,14 @@ def readaddwords(file):
     return set(addw)
 
 
+import argparse
 def main():
-    args = sys.argv
-    if len(args) <= 1:
-        print("Please specifgy filname")
-        sys.exit(-1)
-    addfile = sys.argv[1]
+    parser = argparse.ArgumentParser()
+    parser.add_argument("filename", help="File name")
+    parser.add_argument("-d", "--dryrun", action="store_true", 
+                        help="Do not add kkw")
+    args = parser.parse_args()
+    addfile = args.filename
 
     kkwtbl = loadkkw()
     newwords = readaddwords(addfile)
@@ -76,8 +78,10 @@ def main():
             else:
                 print(w, " already exist")
     print(len(nkkw), " added to kkw")
-    storekkw(kkwtbl, nkkw)
-
+    if not args.dryrun :
+        storekkw(kkwtbl, nkkw)
+    else:
+        print ("Nothing updated because of dryrun")
 
 if __name__ == "__main__":
     main()
