@@ -70,13 +70,15 @@ def main():
 
     nkkw = []
     for w in newwords:
-        if len(w) > 0 :
-            # check w is in the db?
-            if w not in kkwtbl:
-                nkkw.append(w)
-                print(w)
-            else:
-                print(w, " already exist")
+        if len(w) <= 0 :
+           continue   # ignore null word 
+        # check w is in the db?
+        if w not in kkwtbl:
+            nkkw.append(w)
+            print(w)
+        else:
+            print(w, " already exist")
+
     print(len(nkkw), " added to kkw")
     if not args.dryrun :
         storekkw(kkwtbl, nkkw)
